@@ -14,6 +14,8 @@ def generate_car_matrix(df)->pd.DataFrame:
     """
     # Write your logic here
 
+    df = df.pivot(index='id_1', columns='id_2', values='Car')
+
     return df
 
 
