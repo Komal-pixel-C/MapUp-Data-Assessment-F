@@ -39,9 +39,7 @@ def get_type_count(df)->dict:
 
     sort_occType_cnt = dict(sorted(count_occType).value_counts().to_dict())
 
-    
-
-    return dict()
+    return sort_occType_cnt()
 
 
 def get_bus_indexes(df)->list:
