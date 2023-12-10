@@ -53,6 +53,10 @@ def get_bus_indexes(df)->list:
         list: List of indexes where 'bus' values exceed twice the mean.
     """
     # Write your logic here
+    filter = df.groupby('route')
+    filter_avg = filter['truck'].mean()
+
+    list = filter_avg[filter_avg >7].index.tolist()
 
     return list()
 
@@ -69,6 +73,8 @@ def filter_routes(df)->list:
     """
     # Write your logic here
 
+    
+
     return list()
 
 
@@ -83,6 +89,9 @@ def multiply_matrix(matrix)->pd.DataFrame:
         pandas.DataFrame: Modified matrix with values multiplied based on custom conditions.
     """
     # Write your logic here
+
+    matrix = df.applymap(lambda x: round(x * 0.75, 1) if x > 20 else round(x * 1.25, 1))
+
 
     return matrix
 
