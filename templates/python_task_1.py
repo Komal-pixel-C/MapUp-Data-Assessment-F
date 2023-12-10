@@ -15,6 +15,7 @@ def generate_car_matrix(df)->pd.DataFrame:
     # Write your logic here
 
     df = df.pivot(index='id_1', columns='id_2', values='Car')
+    df = df.fillna(0)
 
     return df
 
@@ -30,6 +31,15 @@ def get_type_count(df)->dict:
         dict: A dictionary with car types as keys and their counts as values.
     """
     # Write your logic here
+
+    df['car_type'] = pd.cut(df['car'],bin(float('-inf'),15,25,float('inf')),
+    labels('low','medium','high'))
+
+    count_occType = df['car_type'].value_counts().to_dict()
+
+    sort_occType_cnt = dict(sorted(count_occType).value_counts().to_dict())
+
+    
 
     return dict()
 
